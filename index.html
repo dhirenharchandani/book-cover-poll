@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Polling for my next book cover</title>
-<meta name="description" content="Fire the Founder by Dhiren Harchandani. Three cover finalists. Pick the one you'd pull off the shelf.">
+<meta name="description" content="Fire the Founder by Dhiren Harchandani. Five cover finalists. Pick the one you'd pull off the shelf.">
 <meta property="og:title" content="Polling for my next book cover">
-<meta property="og:description" content="Three finalists for Fire the Founder. Pick the one you'd pull off the shelf.">
+<meta property="og:description" content="Five finalists for Fire the Founder. Pick the one you'd pull off the shelf.">
 <meta property="og:image" content="covers/e.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -61,7 +61,7 @@ footer em{font-family:'Instrument Serif',Georgia,serif;font-size:15px}
 <main id="app">
 <div class="eyebrow">Fire the Founder · Dhiren Harchandani</div>
 <h1>Polling for my next <em>book cover</em></h1>
-<p class="lead">Three finalists. Pick the one you'd pull off the shelf. Would love to hear from you.</p>
+<p class="lead">Five finalists. Pick the one you'd pull off the shelf. Would love to hear from you.</p>
 
 <form id="poll" novalidate>
 <fieldset>
@@ -81,6 +81,16 @@ footer em{font-family:'Instrument Serif',Georgia,serif;font-size:15px}
 <input type="radio" name="cover" value="g">
 <img src="covers/g.jpg" alt="Cover C, The First Match: a row of unstruck matches, the first one burnt down" width="1200" height="1800" loading="eager">
 <span class="meta"><span><span class="name">C · The First Match</span><span class="desc" style="display:block">The match that lit the others is spent.</span></span><span class="tick" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7.5l2.5 2.5L11 4.5" stroke="#F3EFE7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>
+</label>
+<label class="opt">
+<input type="radio" name="cover" value="j">
+<img src="covers/j.jpg" alt="Cover D, Overprint: a two-colour riso print with FIRE in blue over a red circle and FOUNDER in offset red and blue" width="1200" height="1800" loading="lazy">
+<span class="meta"><span><span class="name">D · Overprint</span><span class="desc" style="display:block">Two-colour riso print, loud and contemporary.</span></span><span class="tick" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7.5l2.5 2.5L11 4.5" stroke="#F3EFE7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>
+</label>
+<label class="opt">
+<input type="radio" name="cover" value="d">
+<img src="covers/d.jpg" alt="Cover E, The Empty Chair: a boardroom table seen from above with every seat filled except the head chair, drawn as a dashed red outline pushed back" width="1200" height="1800" loading="lazy">
+<span class="meta"><span><span class="name">E · The Empty Chair</span><span class="desc" style="display:block">The meeting runs without the head seat.</span></span><span class="tick" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7.5l2.5 2.5L11 4.5" stroke="#F3EFE7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>
 </label>
 </div>
 </fieldset>
@@ -103,17 +113,18 @@ footer em{font-family:'Instrument Serif',Georgia,serif;font-size:15px}
 <script>
 (function(){
   var API='https://abacus.jasoncameron.dev', NS='fire-the-founder-cover-poll', LS='ftf-cover-voted';
-  var NAMES={c2:'A · The Ceiling, Broken',e:'B · The Notice',g:'C · The First Match'};
+  var NAMES={c2:'A · The Ceiling, Broken',e:'B · The Notice',g:'C · The First Match',j:'D · Overprint',d:'E · The Empty Chair'};
+  var KEYS=['c2','e','g','j','d'];
   var f=document.getElementById('poll'),err=document.getElementById('err'),go=document.getElementById('go'),app=document.getElementById('app'),box=document.getElementById('results');
   function stored(){try{return localStorage.getItem(LS)}catch(e){return null}}
   function remember(v){try{localStorage.setItem(LS,v)}catch(e){}}
   function get(k){return fetch(API+'/get/'+NS+'/vote-'+k).then(function(r){return r.json()}).then(function(j){return Math.max(0,j.value||0)}).catch(function(){return null})}
   function show(mine){
     app.classList.add('done');
-    Promise.all(['c2','e','g'].map(get)).then(function(v){
+    Promise.all(KEYS.map(get)).then(function(v){
       if(v.some(function(x){return x===null})){box.textContent='Live results are unavailable right now. Your vote still counted.';return}
-      var t=v[0]+v[1]+v[2]||1; box.innerHTML='';
-      ['c2','e','g'].forEach(function(k,i){
+      var t=v.reduce(function(a,b){return a+b},0)||1; box.innerHTML='';
+      KEYS.forEach(function(k,i){
         var pct=Math.round(v[i]*100/t),row=document.createElement('div');row.className='row'+(k===mine?' mine':'');
         var top=document.createElement('div');top.className='rtop';
         var a=document.createElement('span');a.textContent=NAMES[k]+(k===mine?'  (your vote)':'');
