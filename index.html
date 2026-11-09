@@ -128,7 +128,7 @@ footer em{font-family:'Instrument Serif',Georgia,serif;font-size:15px}
         var pct=Math.round(v[i]*100/t),row=document.createElement('div');row.className='row'+(k===mine?' mine':'');
         var top=document.createElement('div');top.className='rtop';
         var a=document.createElement('span');a.textContent=NAMES[k]+(k===mine?'  (your vote)':'');
-        var b=document.createElement('span');b.textContent=pct+'% · '+v[i]+(v[i]===1?' vote':' votes');
+        var b=document.createElement('span');b.textContent=pct+'%';
         top.appendChild(a);top.appendChild(b);
         var bar=document.createElement('div');bar.className='bar';var fill=document.createElement('span');fill.style.width=pct+'%';bar.appendChild(fill);
         row.appendChild(top);row.appendChild(bar);box.appendChild(row);
