@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Polling for my next book cover</title>
+<meta name="description" content="Fire the Founder by Dhiren Harchandani. Three cover finalists. Pick the one you'd pull off the shelf.">
+<meta property="og:title" content="Polling for my next book cover">
+<meta property="og:description" content="Three finalists for Fire the Founder. Pick the one you'd pull off the shelf.">
+<meta property="og:image" content="covers/e.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F3EFE7;--ink:#1A1714;--muted:#5E574E;--line:#D8D0C2;--accent:#B8361A;--card:#FBF9F5}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--paper);color:var(--ink);font-family:'Inter Tight','Helvetica Neue',Arial,sans-serif;-webkit-font-smoothing:antialiased}
+main{max-width:1120px;margin:0 auto;padding:56px 20px 80px}
+.eyebrow{font-size:12px;letter-spacing:.28em;text-transform:uppercase;font-weight:600;color:var(--muted)}
+h1{font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(44px,7vw,84px);line-height:.95;letter-spacing:-.02em;margin:14px 0 18px;text-wrap:balance}
+h1 em{font-style:italic}
+.lead{font-size:18px;line-height:1.5;color:var(--muted);max-width:560px;margin:0}
+form{margin-top:44px}
+fieldset{border:0;margin:0;padding:0}
+legend{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:24px}
+.opt{position:relative;display:flex;flex-direction:column;gap:14px;cursor:pointer;background:var(--card);border:1px solid var(--line);border-radius:6px;padding:14px;transition:border-color .15s,box-shadow .15s,transform .15s}
+.opt:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(40,25,10,.10)}
+.opt input{position:absolute;opacity:0;width:1px;height:1px}
+.opt img{display:block;width:100%;height:auto;aspect-ratio:2/3;object-fit:cover;border-radius:2px;box-shadow:0 10px 24px rgba(30,20,10,.18)}
+.meta{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.name{font-weight:600;font-size:16px}
+.desc{font-size:14px;line-height:1.45;color:var(--muted);margin-top:3px}
+.tick{flex:none;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;transition:all .15s}
+.tick svg{opacity:0}
+.opt:has(input:checked){border-color:var(--ink);box-shadow:0 0 0 2px var(--ink)}
+.opt:has(input:checked) .tick{background:var(--ink);border-color:var(--ink)}
+.opt:has(input:checked) .tick svg{opacity:1}
+.opt:has(input:focus-visible){outline:3px solid var(--accent);outline-offset:3px}
+.vote{margin-top:36px;display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end;border-top:1px solid var(--ink);padding-top:28px}
+.field{display:flex;flex-direction:column;gap:6px;flex:1 1 220px}
+.field label{font-size:13px;font-weight:600}
+.field input{font:inherit;font-size:16px;padding:13px 14px;border:1px solid #B9AFA0;border-radius:4px;background:#fff;color:var(--ink);min-height:48px}
+.field input:focus{outline:2px solid var(--ink);outline-offset:1px}
+button{font:inherit;font-size:16px;font-weight:600;min-height:48px;padding:0 28px;border:0;border-radius:4px;background:var(--ink);color:#F3EFE7;cursor:pointer;flex:0 0 auto}
+button:hover{background:#000}
+button:disabled{opacity:.5;cursor:default}
+.fine{font-size:13px;color:var(--muted);margin:14px 0 0;width:100%}
+.err{color:var(--accent);font-size:14px;font-weight:500;margin:10px 0 0;min-height:1em}
+.thanks{display:none;margin-top:44px;padding:40px 28px;border:1px solid var(--ink);border-radius:6px;background:var(--card);text-align:center}
+.thanks h2{font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:44px;margin:0 0 10px}
+.thanks p{margin:0;color:var(--muted);font-size:17px;line-height:1.5}
+.results{margin:28px auto 0;max-width:560px;text-align:left;display:flex;flex-direction:column;gap:16px}.row .rtop{display:flex;justify-content:space-between;gap:12px;font-size:15px;margin-bottom:6px}.row.mine .rtop{font-weight:600}.bar{height:10px;background:var(--line);border-radius:5px;overflow:hidden}.bar span{display:block;height:100%;background:var(--ink)}.row.mine .bar span{background:var(--accent)}
+.done form{display:none}.done .thanks{display:block}
+footer{margin-top:64px;font-size:13px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;border-top:1px solid var(--line);padding-top:18px}
+footer em{font-family:'Instrument Serif',Georgia,serif;font-size:15px}
+@media (prefers-reduced-motion:reduce){.opt{transition:none}.opt:hover{transform:none}}
+</style>
+</head>
+<body>
+<main id="app">
+<div class="eyebrow">Fire the Founder · Dhiren Harchandani</div>
+<h1>Polling for my next <em>book cover</em></h1>
+<p class="lead">Three finalists. Pick the one you'd pull off the shelf. Would love to hear from you.</p>
+
+<form id="poll" novalidate>
+<fieldset>
+<legend>Choose a cover</legend>
+<div class="grid">
+<label class="opt">
+<input type="radio" name="cover" value="c2" required>
+<img src="covers/c2.jpg" alt="Cover C2, The Ceiling, Broken: a black block smashing up through a black bar on an orange-red cover" width="1200" height="1800" loading="eager">
+<span class="meta"><span><span class="name">C2 · The Ceiling, Broken</span><span class="desc" style="display:block">The version that built it was the ceiling. This is after.</span></span><span class="tick" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7.5l2.5 2.5L11 4.5" stroke="#F3EFE7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>
+</label>
+<label class="opt">
+<input type="radio" name="cover" value="e">
+<img src="covers/e.jpg" alt="Cover E, The Notice: a typewritten termination letter to the founder, stamped Self-issued" width="1200" height="1800" loading="eager">
+<span class="meta"><span><span class="name">E · The Notice</span><span class="desc" style="display:block">A termination letter. Self-issued.</span></span><span class="tick" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7.5l2.5 2.5L11 4.5" stroke="#F3EFE7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>
+</label>
+<label class="opt">
+<input type="radio" name="cover" value="g">
+<img src="covers/g.jpg" alt="Cover G, The First Match: a row of unstruck matches, the first one burnt down" width="1200" height="1800" loading="eager">
+<span class="meta"><span><span class="name">G · The First Match</span><span class="desc" style="display:block">The match that lit the others is spent.</span></span><span class="tick" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7.5l2.5 2.5L11 4.5" stroke="#F3EFE7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>
+</label>
+</div>
+</fieldset>
+
+<div class="vote">
+<button type="submit" id="go">Cast my vote</button>
+<p class="err" id="err" role="alert"></p>
+<p class="fine">One vote per person. Results show once you've voted.</p>
+</div>
+</form>
+
+<div class="thanks" role="status" aria-live="polite">
+<h2>Thank you.</h2>
+<p>Your vote is in. Here's where it stands right now.</p>
+<div class="results" id="results"></div>
+</div>
+
+<footer><span>Dhiren Harchandani</span><span>Author of <em>Bring It On</em></span></footer>
+</main>
+<script>
+(function(){
+  var API='https://abacus.jasoncameron.dev', NS='fire-the-founder-cover-poll', LS='ftf-cover-voted';
+  var NAMES={c2:'C2 · The Ceiling, Broken',e:'E · The Notice',g:'G · The First Match'};
+  var f=document.getElementById('poll'),err=document.getElementById('err'),go=document.getElementById('go'),app=document.getElementById('app'),box=document.getElementById('results');
+  function stored(){try{return localStorage.getItem(LS)}catch(e){return null}}
+  function remember(v){try{localStorage.setItem(LS,v)}catch(e){}}
+  function get(k){return fetch(API+'/get/'+NS+'/vote-'+k).then(function(r){return r.json()}).then(function(j){return Math.max(0,j.value||0)}).catch(function(){return null})}
+  function show(mine){
+    app.classList.add('done');
+    Promise.all(['c2','e','g'].map(get)).then(function(v){
+      if(v.some(function(x){return x===null})){box.textContent='Live results are unavailable right now. Your vote still counted.';return}
+      var t=v[0]+v[1]+v[2]||1; box.innerHTML='';
+      ['c2','e','g'].forEach(function(k,i){
+        var pct=Math.round(v[i]*100/t),row=document.createElement('div');row.className='row'+(k===mine?' mine':'');
+        var top=document.createElement('div');top.className='rtop';
+        var a=document.createElement('span');a.textContent=NAMES[k]+(k===mine?'  (your vote)':'');
+        var b=document.createElement('span');b.textContent=pct+'% · '+v[i]+(v[i]===1?' vote':' votes');
+        top.appendChild(a);top.appendChild(b);
+        var bar=document.createElement('div');bar.className='bar';var fill=document.createElement('span');fill.style.width=pct+'%';bar.appendChild(fill);
+        row.appendChild(top);row.appendChild(bar);box.appendChild(row);
+      });
+    });
+  }
+  var prev=stored(); if(prev){show(prev)}
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var pick=f.querySelector('input[name="cover"]:checked');
+    if(!pick){err.textContent='Pick a cover first.';return}
+    err.textContent='';go.disabled=true;go.textContent='Sending…';
+    fetch(API+'/hit/'+NS+'/vote-'+pick.value).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(){
+      remember(pick.value);show(pick.value);window.scrollTo({top:0,behavior:'smooth'});
+    }).catch(function(){go.disabled=false;go.textContent='Cast my vote';err.textContent='That didn\'t go through. Please try again.'});
+  });
+})();
+</script>
+</body>
+</html>
