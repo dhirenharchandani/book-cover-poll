@@ -69,18 +69,18 @@ footer em{font-family:'Instrument Serif',Georgia,serif;font-size:15px}
 <div class="grid">
 <label class="opt">
 <input type="radio" name="cover" value="c2" required>
-<img src="covers/c2.jpg" alt="Cover C2, The Ceiling, Broken: a black block smashing up through a black bar on an orange-red cover" width="1200" height="1800" loading="eager">
-<span class="meta"><span><span class="name">C2 · The Ceiling, Broken</span><span class="desc" style="display:block">The version that built it was the ceiling. This is after.</span></span><span class="tick" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7.5l2.5 2.5L11 4.5" stroke="#F3EFE7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>
+<img src="covers/c2.jpg" alt="Cover A, The Ceiling, Broken: a black block smashing up through a black bar on an orange-red cover" width="1200" height="1800" loading="eager">
+<span class="meta"><span><span class="name">A · The Ceiling, Broken</span><span class="desc" style="display:block">The version that built it was the ceiling. This is after.</span></span><span class="tick" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7.5l2.5 2.5L11 4.5" stroke="#F3EFE7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>
 </label>
 <label class="opt">
 <input type="radio" name="cover" value="e">
-<img src="covers/e.jpg" alt="Cover E, The Notice: a typewritten termination letter to the founder, stamped Self-issued" width="1200" height="1800" loading="eager">
-<span class="meta"><span><span class="name">E · The Notice</span><span class="desc" style="display:block">A termination letter. Self-issued.</span></span><span class="tick" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7.5l2.5 2.5L11 4.5" stroke="#F3EFE7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>
+<img src="covers/e.jpg" alt="Cover B, The Notice: a typewritten termination letter to the founder, stamped Self-issued" width="1200" height="1800" loading="eager">
+<span class="meta"><span><span class="name">B · The Notice</span><span class="desc" style="display:block">A termination letter. Self-issued.</span></span><span class="tick" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7.5l2.5 2.5L11 4.5" stroke="#F3EFE7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>
 </label>
 <label class="opt">
 <input type="radio" name="cover" value="g">
-<img src="covers/g.jpg" alt="Cover G, The First Match: a row of unstruck matches, the first one burnt down" width="1200" height="1800" loading="eager">
-<span class="meta"><span><span class="name">G · The First Match</span><span class="desc" style="display:block">The match that lit the others is spent.</span></span><span class="tick" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7.5l2.5 2.5L11 4.5" stroke="#F3EFE7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>
+<img src="covers/g.jpg" alt="Cover C, The First Match: a row of unstruck matches, the first one burnt down" width="1200" height="1800" loading="eager">
+<span class="meta"><span><span class="name">C · The First Match</span><span class="desc" style="display:block">The match that lit the others is spent.</span></span><span class="tick" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7.5l2.5 2.5L11 4.5" stroke="#F3EFE7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>
 </label>
 </div>
 </fieldset>
@@ -103,7 +103,7 @@ footer em{font-family:'Instrument Serif',Georgia,serif;font-size:15px}
 <script>
 (function(){
   var API='https://abacus.jasoncameron.dev', NS='fire-the-founder-cover-poll', LS='ftf-cover-voted';
-  var NAMES={c2:'C2 · The Ceiling, Broken',e:'E · The Notice',g:'G · The First Match'};
+  var NAMES={c2:'A · The Ceiling, Broken',e:'B · The Notice',g:'C · The First Match'};
   var f=document.getElementById('poll'),err=document.getElementById('err'),go=document.getElementById('go'),app=document.getElementById('app'),box=document.getElementById('results');
   function stored(){try{return localStorage.getItem(LS)}catch(e){return null}}
   function remember(v){try{localStorage.setItem(LS,v)}catch(e){}}
